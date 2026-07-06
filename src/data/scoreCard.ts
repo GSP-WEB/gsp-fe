@@ -10,6 +10,11 @@ export interface TerritoryBar {
   value: number | null;
 }
 
+export interface TerritoryMonthlyTrend {
+  territory: Territory;
+  values: (number | null)[]; // aligned index-for-index with monthlyTrend
+}
+
 export interface KpiCardData {
   id: string;
   title: string;
@@ -18,6 +23,8 @@ export interface KpiCardData {
   monthlyTrend: MonthlyDataPoint[];
   territoryBars: TerritoryBar[];
   workInProgress?: boolean;
+  /** Optional: per-territory history for the hover trend chart. Only needed if you want the full multi-line breakdown instead of the latest-snapshot table. */
+  territoryMonthlyTrend?: TerritoryMonthlyTrend[];
 }
 
 export interface OverallRatingRow {
@@ -55,6 +62,16 @@ export const b2cGfpSellingJan: KpiCardData = {
     { territory: 'T6', value: 43 },
     { territory: 'T7', value: null },
     { territory: 'T8', value: null },
+  ],
+  // Dec left null — not provided in the source breakdown yet.
+  territoryMonthlyTrend: [
+    { territory: 'T1', values: [null, 45, 56, 69, 71, 56] },
+    { territory: 'T2', values: [null, 56, 70, 54, 69, 69] },
+    { territory: 'T3', values: [null, 23, 41, 54, 39, 43] },
+    { territory: 'T4', values: [null, 61, 70, 39, 71, 72] },
+    { territory: 'T5', values: [null, 61, 61, 43, 71, 72] },
+    { territory: 'T6', values: [null, 25, 24, 29, 66, 77] },
+    { territory: 'T7', values: [null, 23, 38, 29, 66, 78] },
   ],
 };
 
