@@ -1,0 +1,134 @@
+@import '../../styles/variables';
+
+.sidebar {
+  width: $sidebar-width;
+  flex-shrink: 0;
+  background: $color-sidebar-bg;
+  color: $color-sidebar-text;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.section {
+  padding: $space-sm;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sectionHeader {
+  margin-bottom: $space-sm;
+}
+
+.sectionTitle {
+  font-size: $font-size-base;
+  font-weight: 700;
+  color: $color-rating-gold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+// Overall Rating table
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-xs;
+
+  thead tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    th {
+      text-align: left;
+      padding: 4px $space-xs;
+      color: $color-sidebar-muted;
+      font-weight: 600;
+      font-size: $font-size-xs;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    td {
+      padding: 5px $space-xs;
+      color: $color-sidebar-text;
+      font-size: $font-size-xs;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+// Rating Legend
+.legendHeader {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  color: $color-sidebar-muted;
+  margin-bottom: $space-xs;
+  letter-spacing: 0.04em;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  li {
+    font-size: $font-size-xs;
+    color: $color-sidebar-text;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+.legendScore {
+  font-weight: 700;
+  color: $color-rating-gold;
+}
+
+// KPI Dates table
+.kpiTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-xs;
+
+  thead tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    th {
+      text-align: left;
+      padding: 4px $space-xs;
+      color: $color-sidebar-muted;
+      font-weight: 600;
+      font-size: $font-size-xs;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    td {
+      padding: 4px $space-xs;
+      color: $color-sidebar-text;
+      font-size: $font-size-xs;
+      line-height: 1.3;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+}
+
+.dateCell {
+  color: $color-sidebar-muted !important;
+  white-space: nowrap;
+}

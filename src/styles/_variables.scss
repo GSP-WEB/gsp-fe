@@ -1,0 +1,54 @@
+// ─── Color Palette ───────────────────────────────────────────
+$color-bg: #f0f0f0;
+$color-surface: #ffffff;
+$color-card-header: #3a3a3a;
+$color-card-header-dark: #2c2c2c;
+$color-sidebar-bg: #2c2c2c;
+$color-sidebar-text: #ffffff;
+$color-sidebar-muted: #aaaaaa;
+
+$color-blue-bar: #4a90d9;
+$color-blue-bar-light: #6aade8;
+$color-red-bar: #e05555;
+$color-orange-bar: #e08030;
+$color-yellow-bar: #d4b800;
+
+$color-nav-active: #1a73e8;
+$color-nav-text: #1a73e8;
+$color-nav-bg: #ffffff;
+$color-nav-border: #e0e0e0;
+
+$color-rating-gold: #f0c040;
+$color-text-primary: #1a1a1a;
+$color-text-secondary: #555555;
+$color-text-muted: #888888;
+$color-border: #d0d0d0;
+$color-wip-bg: #f8f8f8;
+$color-wip-text: #888888;
+
+// ─── Typography ──────────────────────────────────────────────
+$font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+$font-data: 'Roboto Mono', 'Courier New', monospace;
+
+$font-size-xs: 10px;
+$font-size-sm: 11px;
+$font-size-base: 12px;
+$font-size-md: 13px;
+$font-size-lg: 14px;
+$font-size-xl: 16px;
+$font-size-kpi: 36px;
+$font-size-kpi-lg: 42px;
+
+// ─── Spacing ─────────────────────────────────────────────────
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 12px;
+$space-lg: 16px;
+$space-xl: 24px;
+
+// ─── Layout ──────────────────────────────────────────────────
+$sidebar-width: 280px;
+$navbar-height: 48px;
+$topbar-height: 52px;
+$card-radius: 2px;
+$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);

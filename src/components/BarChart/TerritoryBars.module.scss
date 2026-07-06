@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: $space-xs 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  height: 14px;
+}
+
+.label {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  width: 18px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.barTrack {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.bar {
+  height: 10px;
+  background-color: $color-blue-bar;
+  border-radius: 1px;
+  min-width: 2px;
+  transition: width 0.3s ease;
+}
+
+.value {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  white-space: nowrap;
+}
+
+.empty {
+  width: 100%;
+  height: 10px;
+  background-color: $color-bg;
+  border-radius: 1px;
+}

@@ -1,0 +1,107 @@
+@import '../../styles/variables';
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $topbar-height;
+  padding: 0 $space-lg;
+  background-color: $color-surface;
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.icon {
+  font-size: 20px;
+  color: $color-text-secondary;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: 500;
+  color: $color-text-primary;
+  letter-spacing: 0.01em;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.btnReset {
+  padding: 6px 14px;
+  border: 1px solid $color-border;
+  border-radius: 20px;
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  background: $color-surface;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $color-bg;
+  }
+}
+
+.btnShare {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background-color: #c8e6ff;
+  border: none;
+  border-radius: 20px;
+  font-size: $font-size-base;
+  font-weight: 500;
+  color: #1a73e8;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: #b0d8ff;
+  }
+}
+
+.chevron {
+  font-size: $font-size-xs;
+}
+
+.btnMore {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-border;
+  border-radius: 50%;
+  font-size: 18px;
+  color: $color-text-secondary;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-bg;
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1a73e8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-md;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,4 @@
+@import '../../styles/variables';
+.shell { display: flex; flex-direction: column; height: 100vh; }
+.body { flex: 1; display: flex; align-items: center; justify-content: center; background: $color-bg; }
+.wip { font-size: 24px; font-weight: 700; color: $color-text-muted; letter-spacing: 0.1em; }
