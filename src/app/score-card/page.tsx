@@ -27,27 +27,30 @@ export default function ScoreCardPage() {
           <div className={styles.grid3}>
             <KpiCard data={b2cGfpSellingJan} />
             <KpiCard data={b2cGfpSellingGay} />
-            <KpiCard data={b2cSellingAchievement} />
+            <KpiCard data={b2cSellingAchievement} align="right" />
           </div>
 
           {/* Row 2: Slot Adherence */}
           <div className={styles.grid3}>
             <KpiCard data={b2cInstallSlotAdherence} />
             <KpiCard data={b2bInstallSlotAdherence} />
-            <KpiCard data={b2bB2cSlotAvailability} />
+            <KpiCard data={b2bB2cSlotAvailability} align="right" />
+            {/* <KpiCard data={b2cGfpSellingJan} />
+            <KpiCard data={b2cGfpSellingGay} />
+            <KpiCard data={b2cSellingAchievement} align="right" /> */}
           </div>
 
           {/* Row 3: Install Within 24h */}
           <div className={styles.grid3}>
             <KpiCard data={b2cInstallWithin24h} />
             <KpiCard data={b2bInstallWithin24h} />
-            <KpiCard data={b2bCoreDataSchedule} />
+            <KpiCard data={b2bCoreDataSchedule} align="right" />
           </div>
 
           {/* Row 4: Quality + Acquisition */}
           <div className={styles.grid2}>
             <KpiCard data={b2cB2bQualityInstall} />
-            <KpiCard data={b2cAcquisitionQuality} />
+            <KpiCard data={b2cAcquisitionQuality} align="right" />
           </div>
 
           <div className={styles.footer}>
