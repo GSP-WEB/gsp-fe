@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   LineChart,
   Line,
@@ -8,9 +8,9 @@ import {
   Tooltip,
   ResponsiveContainer,
   Label,
-} from 'recharts';
-import { KpiCardData, Territory } from '@/data/scoreCard';
-import styles from './TrendPanel.module.scss';
+} from "recharts";
+import { KpiCardData, Territory } from "@/data/scoreCard";
+import styles from "./TrendPanel.module.scss";
 
 interface Props {
   data: KpiCardData;
@@ -18,14 +18,14 @@ interface Props {
 
 // Fixed categorical palette — one color per territory, never reassigned by rank.
 const TERRITORY_COLORS: Record<Territory, string> = {
-  T1: '#2a78d6',
-  T2: '#1baf7a',
-  T3: '#eda100',
-  T4: '#008300',
-  T5: '#9085e9',
-  T6: '#e34948',
-  T7: '#e87ba4',
-  T8: '#eb6834',
+  T1: "#2a78d6",
+  T2: "#1baf7a",
+  T3: "#eda100",
+  T4: "#008300",
+  T5: "#9085e9",
+  T6: "#e34948",
+  T7: "#e87ba4",
+  T8: "#eb6834",
 };
 
 function buildChartRows(data: KpiCardData) {
@@ -46,8 +46,12 @@ export default function TrendPanel({ data }: Props) {
   const hasTrend = data.monthlyTrend.some((d) => d.value !== null);
   const territoryTrends = data.territoryMonthlyTrend ?? [];
   const hasTerritoryTrends = territoryTrends.length > 0;
-  const snapshotTerritories = data.territoryBars.filter((b) => b.value !== null);
-  const latestNationwide = [...data.monthlyTrend].reverse().find((d) => d.value !== null)?.value;
+  const snapshotTerritories = data.territoryBars.filter(
+    (b) => b.value !== null,
+  );
+  const latestNationwide = [...data.monthlyTrend]
+    .reverse()
+    .find((d) => d.value !== null)?.value;
   const chartRows = buildChartRows(data);
 
   return (
@@ -69,17 +73,22 @@ export default function TrendPanel({ data }: Props) {
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={chartRows}
-                margin={{ top: 8, right: hasTerritoryTrends ? 30 : 16, left: 0, bottom: 0 }}
+                margin={{
+                  top: 8,
+                  right: hasTerritoryTrends ? 30 : 16,
+                  left: 0,
+                  bottom: 0,
+                }}
               >
                 <CartesianGrid stroke="#e5e5e5" vertical={false} />
                 <XAxis
                   dataKey="month"
-                  tick={{ fontSize: 10, fill: '#888' }}
+                  tick={{ fontSize: 10, fill: "#888" }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 10, fill: '#888' }}
+                  tick={{ fontSize: 10, fill: "#888" }}
                   axisLine={false}
                   tickLine={false}
                   width={32}
@@ -88,9 +97,9 @@ export default function TrendPanel({ data }: Props) {
                 <Tooltip
                   formatter={(v: number, name: string) => [
                     `${v}${data.unit}`,
-                    name === 'nationwide' ? 'Nationwide' : name,
+                    name === "nationwide" ? "Nationwide" : name,
                   ]}
-                  contentStyle={{ fontSize: 11, padding: '4px 8px' }}
+                  contentStyle={{ fontSize: 11, padding: "4px 8px" }}
                   labelStyle={{ fontWeight: 600 }}
                 />
                 {territoryTrends.map((t) => (
@@ -113,7 +122,10 @@ export default function TrendPanel({ data }: Props) {
                   connectNulls
                 >
                   {!hasTerritoryTrends && (
-                    <Label value={`${latestNationwide}${data.unit}`} position="top" />
+                    <Label
+                      value={`${latestNationwide}${data.unit}`}
+                      position="top"
+                    />
                   )}
                 </Line>
               </LineChart>
@@ -121,7 +133,6 @@ export default function TrendPanel({ data }: Props) {
           </div>
         </>
       )}
-
       {hasTerritoryTrends && (
         <div className={styles.legendChips}>
           {territoryTrends.map((t) => (
@@ -135,7 +146,6 @@ export default function TrendPanel({ data }: Props) {
           ))}
         </div>
       )}
-
       {hasTerritoryTrends ? (
         <div className={styles.tableScroll}>
           <table className={styles.table}>
@@ -151,14 +161,16 @@ export default function TrendPanel({ data }: Props) {
               <tr className={styles.nationwideRow}>
                 <td>Nationwide</td>
                 {data.monthlyTrend.map((m) => (
-                  <td key={m.month}>{m.value !== null ? `${m.value}${data.unit}` : '—'}</td>
+                  <td key={m.month}>
+                    {m.value !== null ? `${m.value}${data.unit}` : "—"}
+                  </td>
                 ))}
               </tr>
               {territoryTrends.map((t) => (
                 <tr key={t.territory}>
                   <td>{t.territory}</td>
                   {t.values.map((v, i) => (
-                    <td key={i}>{v !== null ? `${v}${data.unit}` : '—'}</td>
+                    <td key={i}>{v !== null ? `${v}${data.unit}` : "—"}</td>
                   ))}
                 </tr>
               ))}
@@ -186,7 +198,6 @@ export default function TrendPanel({ data }: Props) {
           </tbody>
         </table>
       ) : null}
-
       {!hasTrend && snapshotTerritories.length === 0 && !hasTerritoryTrends && (
         <div className={styles.empty}>No historical data yet</div>
       )}
