@@ -9,12 +9,12 @@ export default function TopBar() {
         <h1 className={styles.title}>[GT] GSP PERFORMANCE DASHBOARD</h1>
       </div>
       <div className={styles.actions}>
-        <button className={styles.btnReset}>↩ Reset</button>
+        {/* <button className={styles.btnReset}>↩ Reset</button>
         <button className={styles.btnShare}>
           <span>👤+</span> Share <span className={styles.chevron}>▾</span>
-        </button>
+        </button> */}
         <button className={styles.btnMore}>⋮</button>
-        <div className={styles.avatar}>G</div>
+        <div className={styles.avatar}>KC</div>
       </div>
     </header>
   );

@@ -1,0 +1,15 @@
+@import "../../../styles/variables";
+.body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg;
+  width: 100%;
+}
+.wip {
+  font-size: 24px;
+  font-weight: 700;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+}
