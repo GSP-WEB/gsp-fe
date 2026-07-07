@@ -1,0 +1,40 @@
+// @import '../../styles/variables';
+@import "../../../styles/variables";
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  background: $color-bg;
+  min-width: 0;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-sm;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-sm;
+}
+
+.footer {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  padding: $space-xs 0 $space-sm;
+  border-top: 1px solid $color-border;
+  margin-top: $space-xs;
+}

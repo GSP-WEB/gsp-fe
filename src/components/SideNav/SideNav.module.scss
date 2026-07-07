@@ -1,0 +1,165 @@
+@import '../../styles/variables';
+
+.sidenav {
+  width: $sidebar-width;
+  min-width: $sidebar-width;
+  height: 100%;
+  background: $color-sidebar-bg;
+  color: $color-sidebar-text;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.18s ease, min-width 0.18s ease;
+}
+
+.collapsed {
+  width: 64px;
+  min-width: 64px;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  width: 100%;
+  padding: $space-md $space-lg;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: $color-sidebar-text;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+.hamburger {
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.toggleLabel {
+  font-size: $font-size-md;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list {
+  list-style: none;
+  padding: $space-sm 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 999px;
+  margin: 2px $space-sm;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.rowActive {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  flex: 1;
+  min-width: 0;
+  padding: $space-sm $space-md;
+  color: $color-sidebar-text;
+  text-decoration: none;
+  font-size: $font-size-md;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.labelText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-sidebar-muted;
+  flex-shrink: 0;
+}
+
+.rowActive .dot {
+  background: $color-nav-active;
+}
+
+.chevronBtn {
+  background: transparent;
+  border: none;
+  color: $color-sidebar-muted;
+  cursor: pointer;
+  padding: $space-xs $space-sm;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: $color-sidebar-text;
+  }
+}
+
+.chevron {
+  display: inline-block;
+  font-size: $font-size-sm;
+  transition: transform 0.15s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.subList {
+  list-style: none;
+  margin: 0;
+  padding: 0 $space-sm $space-xs calc(#{$space-lg} + 8px + #{$space-sm});
+  display: flex;
+  flex-direction: column;
+}
+
+.subLabel {
+  display: block;
+  padding: 6px $space-sm;
+  border-radius: 999px;
+  font-size: $font-size-base;
+  color: $color-sidebar-muted;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: $color-sidebar-text;
+  }
+}
+
+.subLabelActive {
+  color: $color-sidebar-text;
+  font-weight: 600;
+}

@@ -325,15 +325,129 @@ export const kpiDates: KpiDateRow[] = [
   { kpi: "B2C GAH Selling", dataAsOf: "May 27, 2026" },
 ];
 
-export const navTabs = [
-  { label: "SCORE CARD", href: "/score-card", active: true },
+export interface NavItem {
+  label: string;
+  href: string;
+  children?: NavItem[];
+}
+
+export const navTabs: NavItem[] = [
+  {
+    label: "SCORE CARD",
+    href: "/score-card/selling-and-installation",
+    children: [
+      {
+        label: "Selling and Installation",
+        href: "/score-card/selling-and-installation",
+      },
+      { label: "Network Maintenance", href: "/score-card/network-maintenance" },
+      { label: "Last Mile Repair", href: "/score-card/last-mile-repair" },
+    ],
+  },
   {
     label: "SELLING AND INSTALLATION",
-    href: "/selling-and-installation",
-    active: false,
+    href: "/selling-and-installation/p1",
+    children: [
+      {
+        label: "[WOR] Selling and Installation (P1)",
+        href: "/selling-and-installation/p1",
+      },
+      {
+        label: "[WOR] Selling and Installation (P2)",
+        href: "/selling-and-installation/p2",
+      },
+      {
+        label: "Install Slot Adherence",
+        href: "/selling-and-installation/install-slot-adherence",
+      },
+      {
+        label: "Install Slot Availability",
+        href: "/selling-and-installation/install-slot-availability",
+      },
+    ],
   },
-  { label: "NETWORK MAINTENANCE", href: "/network-maintenance", active: false },
-  { label: "LAST MILE REPAIR", href: "/last-mile-repair", active: false },
-  { label: "B2B SECTION", href: "/b2b-section", active: false },
-  { label: "OTHER REPORTS", href: "/other-reports", active: false },
+  {
+    label: "NETWORK MAINTENANCE",
+    href: "/network-maintenance/distribution",
+    children: [
+      {
+        label: "Distribution (MCT)",
+        href: "/network-maintenance/distribution",
+      },
+    ],
+  },
+  {
+    label: "LAST MILE REPAIR",
+    href: "/last-mile-repair/wor",
+    children: [
+      {
+        label: "[WOR] Last Mile Repair",
+        href: "/last-mile-repair/wor",
+      },
+      {
+        label: "Repair Pipeline & Aging",
+        href: "/last-mile-repair/repair-pipeline-and-aging",
+      },
+      {
+        label: "Repair Tickets",
+        href: "/last-mile-repair/repair-tickets",
+      },
+      {
+        label: "Repair Slot Adherence",
+        href: "/last-mile-repair/repair-slot-adherence",
+      },
+      {
+        label: "Repair Slot Availability",
+        href: "/last-mile-repair/repair-slot-availability",
+      },
+      {
+        label: "Core Data Timeliness",
+        href: "/last-mile-repair/core-data-timeliness",
+      },
+    ],
+  },
+  {
+    label: "B2B SECTION",
+    href: "/b2b-section/core-data-mttr-reso",
+    children: [
+      {
+        label: "Core Data MTTR-Reso",
+        href: "/b2b-section/core-data-mttr-reso",
+      },
+    ],
+  },
+  {
+    label: "OTHER REPORTS",
+    href: "/other-reports/ng1-compliance",
+    children: [
+      {
+        label: "NG1 Compliance",
+        href: "/other-reports/ng1-compliance",
+      },
+      {
+        label: "Violation Tickets",
+        href: "/other-reports/violation-tickets",
+      },
+      {
+        label: "NPS",
+        href: "/other-reports/nps",
+      },
+      {
+        label: "Selling Details",
+        href: "/other-reports/selling-details",
+      },
+      {
+        label: "Team Based Selling",
+        href: "/other-reports/team-based-selling",
+      },
+      {
+        label: "GSP Daily Critical Report",
+        href: "/other-reports/gsp-daily-critical-report",
+      },
+      {
+        label: "Payout Dashboard",
+        href: "/other-reports/payout-dashboard",
+      },
+    ],
+  },
 ];
