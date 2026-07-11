@@ -39,6 +39,7 @@ export interface KpiDateRow {
 }
 
 // ─── Score Card KPI Data ─────────────────────────────────────
+// NOTE: mock data is used here for demonstration purposes. In a real application, this data would be fetched from an API or database.
 
 export const b2cGfpSellingJan: KpiCardData = {
   id: "b2c-gfp-selling-jan",
