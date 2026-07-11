@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+
+.grid {
+  display: grid;
+  gap: var(--grid-gap, #{$space-sm});
+}
+
+.auto {
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-col, 260px), 1fr));
+}
+
+.fixed {
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+}

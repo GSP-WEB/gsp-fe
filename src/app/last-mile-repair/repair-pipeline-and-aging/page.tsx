@@ -1,9 +1,5 @@
-import styles from "./page.module.scss";
+import WorkInProgress from "@/components/WorkInProgress/WorkInProgress";
 
 export default function Page() {
-  return (
-    <div className={styles.body}>
-      <p className={styles.wip}>WORK IN PROGRESS</p>
-    </div>
-  );
+  return <WorkInProgress />;
 }

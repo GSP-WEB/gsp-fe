@@ -1,4 +1,5 @@
 "use client";
+import { useRef, useState } from "react";
 import { KpiCardData } from "@/data/scoreCard";
 import TrendPanel from "./TrendPanel";
 import styles from "./KpiCard.module.scss";
@@ -6,16 +7,27 @@ import styles from "./KpiCard.module.scss";
 interface Props {
   data: KpiCardData;
   wide?: boolean;
-  /** Which edge the hover panel should hug — use "right" for the last card in a row so the panel doesn't run off the page. */
-  align?: "left" | "right";
 }
 
-export default function KpiCard({ data, wide = false, align = "left" }: Props) {
+// How much horizontal room (px) the panel needs before we decide it'd run
+// off the right edge and should hug the right side of the card instead.
+const PANEL_WIDTH = 460;
+
+export default function KpiCard({ data, wide = false }: Props) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [flipped, setFlipped] = useState(false);
+
+  const checkOverflow = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    const { left } = el.getBoundingClientRect();
+    const wouldOverflow = left + PANEL_WIDTH > window.innerWidth;
+    setFlipped(wouldOverflow);
+  };
+
   if (data.workInProgress) {
     return (
-      <div
-        className={`${styles.card} ${wide ? styles.wide : ""} ${styles.wip}`}
-      >
+      <div className={`${styles.card} ${wide ? styles.wide : ""} ${styles.wip}`}>
         <div className={styles.header}>
           <span className={styles.headerTitle}>{data.title}</span>
         </div>
@@ -33,7 +45,10 @@ export default function KpiCard({ data, wide = false, align = "left" }: Props) {
 
   return (
     <div
+      ref={cardRef}
       className={`${styles.card} ${wide ? styles.wide : ""} ${hasDetail ? styles.hoverable : ""}`}
+      onMouseEnter={checkOverflow}
+      onFocus={checkOverflow}
     >
       <div className={styles.header}>
         <span className={styles.headerTitle}>{data.title}</span>
@@ -50,9 +65,7 @@ export default function KpiCard({ data, wide = false, align = "left" }: Props) {
       </div>
 
       {hasDetail && (
-        <div
-          className={`${styles.hoverPanel} ${align === "right" ? styles.alignRight : ""}`}
-        >
+        <div className={`${styles.hoverPanel} ${flipped ? styles.alignRight : ""}`}>
           <TrendPanel data={data} />
         </div>
       )}
