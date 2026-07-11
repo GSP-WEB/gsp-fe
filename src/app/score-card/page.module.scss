@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  background: $color-bg;
+  min-width: 0;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid $color-border;
+  background: $color-surface;
+  color: $color-text-muted;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    border-color: $color-nav-active;
+  }
+}
+
+.chipDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-text-muted;
+  transition: background 0.15s;
+}
+
+.chipActive {
+  background: $color-nav-active;
+  border-color: $color-nav-active;
+  color: #ffffff;
+
+  .chipDot {
+    background: #ffffff;
+  }
+}
+
+.empty {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  padding: $space-md 0;
+}
+
+.footer {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  padding: $space-xs 0 $space-sm;
+  border-top: 1px solid $color-border;
+  margin-top: $space-xs;
+}

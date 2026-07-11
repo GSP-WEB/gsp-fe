@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: 700;
+  color: $color-text-primary;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}

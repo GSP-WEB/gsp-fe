@@ -335,7 +335,7 @@ export interface NavItem {
 export const navTabs: NavItem[] = [
   {
     label: "SCORE CARD",
-    href: "/score-card/selling-and-installation",
+    href: "/score-card",
     children: [
       {
         label: "Selling and Installation",
