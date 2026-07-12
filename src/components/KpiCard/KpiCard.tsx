@@ -13,6 +13,26 @@ interface Props {
 // off the right edge and should hug the right side of the card instead.
 const PANEL_WIDTH = 460;
 
+interface MomDelta {
+  month: string;
+  delta: number;
+}
+
+// Month-over-month delta from the last two non-null points in the trend.
+// NOTE: this assumes "higher is better" (green on increase, amber on
+// decrease), which holds for most of these KPIs (selling %, install
+// quality, etc.) but would be backwards for a metric where lower is
+// better (e.g. latency, congestion). There's no per-KPI "direction"
+// field in the data model yet — add one if you need per-card control.
+function getMomDelta(data: KpiCardData): MomDelta | null {
+  const points = data.monthlyTrend.filter((d) => d.value !== null);
+  if (points.length < 2) return null;
+  const latest = points[points.length - 1];
+  const prior = points[points.length - 2];
+  const delta = Math.round((latest.value! - prior.value!) * 10) / 10;
+  return { month: latest.month, delta };
+}
+
 export default function KpiCard({ data, wide = false }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [flipped, setFlipped] = useState(false);
@@ -42,6 +62,7 @@ export default function KpiCard({ data, wide = false }: Props) {
   const hasDetail =
     data.monthlyTrend.some((d) => d.value !== null) ||
     data.territoryBars.some((b) => b.value !== null);
+  const mom = hasValue ? getMomDelta(data) : null;
 
   return (
     <div
@@ -53,12 +74,26 @@ export default function KpiCard({ data, wide = false }: Props) {
       <div className={styles.header}>
         <span className={styles.headerTitle}>{data.title}</span>
       </div>
+
+      {mom && <div className={styles.asOf}>as of {mom.month.toUpperCase()}</div>}
+
       <div className={styles.body}>
         {hasValue ? (
-          <div className={styles.kpiValue}>
-            {data.overallValue}
-            {data.unit}
-          </div>
+          <>
+            <div className={styles.kpiValue}>
+              {data.overallValue}
+              {data.unit}
+            </div>
+            {mom && mom.delta !== 0 && (
+              <div className={`${styles.delta} ${mom.delta > 0 ? styles.deltaUp : styles.deltaDown}`}>
+                <span className={styles.deltaArrow}>{mom.delta > 0 ? "▲" : "▼"}</span>
+                MoM: {mom.delta > 0 ? "+" : ""}
+                {mom.delta}
+                {data.unit}
+              </div>
+            )}
+            {mom && mom.delta === 0 && <div className={styles.deltaFlat}>— No change MoM</div>}
+          </>
         ) : (
           <div className={styles.kpiDash}>-</div>
         )}
