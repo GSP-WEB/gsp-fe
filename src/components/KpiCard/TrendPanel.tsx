@@ -116,7 +116,7 @@ export default function TrendPanel({ data }: Props) {
                 <Line
                   type="monotone"
                   dataKey="nationwide"
-                  stroke="#2c2c2c"
+                  stroke="#16213e"
                   strokeWidth={3}
                   dot={{ r: 3 }}
                   connectNulls

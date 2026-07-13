@@ -6,8 +6,8 @@
   justify-content: space-between;
   height: $topbar-height;
   padding: 0 $space-lg;
-  background-color: $color-surface;
-  border-bottom: 1px solid $color-border;
+  background-color: $color-navy;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -21,13 +21,13 @@
 
 .icon {
   font-size: 20px;
-  color: $color-text-secondary;
+  color: $color-gold;
 }
 
 .title {
   font-size: $font-size-lg;
   font-weight: 500;
-  color: $color-text-primary;
+  color: #ffffff;
   letter-spacing: 0.01em;
 }
 
@@ -39,16 +39,16 @@
 
 .btnReset {
   padding: 6px 14px;
-  border: 1px solid $color-border;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   font-size: $font-size-base;
-  color: $color-text-secondary;
-  background: $color-surface;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
   cursor: pointer;
   transition: background 0.15s;
 
   &:hover {
-    background: $color-bg;
+    background: rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -57,17 +57,17 @@
   align-items: center;
   gap: 6px;
   padding: 6px 16px;
-  background-color: #c8e6ff;
+  background-color: rgba($color-gold, 0.16);
   border: none;
   border-radius: 20px;
   font-size: $font-size-base;
   font-weight: 500;
-  color: #1a73e8;
+  color: $color-gold;
   cursor: pointer;
   transition: background 0.15s;
 
   &:hover {
-    background: #b0d8ff;
+    background: rgba($color-gold, 0.26);
   }
 }
 
@@ -81,14 +81,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid $color-border;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   font-size: 18px;
-  color: $color-text-secondary;
+  color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
 
   &:hover {
-    background: $color-bg;
+    background: rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -96,12 +96,12 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #1a73e8;
-  color: white;
+  background-color: $color-gold;
+  color: $color-navy;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: $font-size-md;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
 }

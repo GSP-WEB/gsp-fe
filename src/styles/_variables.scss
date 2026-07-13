@@ -1,30 +1,51 @@
 // ─── Color Palette ───────────────────────────────────────────
-$color-bg: #f0f0f0;
+// Based on the company's navy / gold / green brand system (see the
+// reference dashboard: navy ticker + panels, gold highlights, green/amber
+// status indicators).
+$color-bg: #f2f4f8;
 $color-surface: #ffffff;
-$color-card-header: #3a3a3a;
-$color-card-header-dark: #2c2c2c;
-$color-sidebar-bg: #2c2c2c;
+
+// Card headers use the brand navy instead of neutral charcoal.
+$color-card-header: #1f2e52;
+$color-card-header-dark: #16213e;
+
+// Left nav + right rating panel share this dark navy rail.
+$color-sidebar-bg: #16213e;
+$color-sidebar-bg-raised: #1f2e52;
 $color-sidebar-text: #ffffff;
-$color-sidebar-muted: #aaaaaa;
+$color-sidebar-muted: #97a1bd;
 
 $color-blue-bar: #4a90d9;
 $color-blue-bar-light: #6aade8;
-$color-red-bar: #e05555;
+$color-red-bar: #d64545;
 $color-orange-bar: #e08030;
 $color-yellow-bar: #d4b800;
 
-$color-nav-active: #1a73e8;
-$color-nav-text: #1a73e8;
+// Brand navy + gold accent, taken from the reference dashboard's
+// ticker bar and BUILD/FINANCIALS panels.
+$color-navy: #16213e;
+$color-navy-light: #1f2e52;
+$color-gold: #e8a33d;
+$color-nav-active: $color-gold;
+$color-nav-text: $color-gold;
 $color-nav-bg: #ffffff;
-$color-nav-border: #e0e0e0;
+$color-nav-border: #e2e5ec;
 
-$color-rating-gold: #f0c040;
-$color-text-primary: #1a1a1a;
-$color-text-secondary: #555555;
-$color-text-muted: #888888;
-$color-border: #d0d0d0;
-$color-wip-bg: #f8f8f8;
-$color-wip-text: #888888;
+// Semantic status colors — green = improved, amber = degraded, gray = no
+// data — matching the "Improved / Degraded / No data" legend in the
+// reference screenshot.
+$color-success: #2e8b57;
+$color-warning: #e0a939;
+$color-danger: #d64545;
+$color-neutral: #9aa1b1;
+
+$color-rating-gold: $color-gold;
+$color-text-primary: #182135;
+$color-text-secondary: #4b5568;
+$color-text-muted: #6b7280;
+$color-border: #e2e5ec;
+$color-wip-bg: #f7f8fb;
+$color-wip-text: #6b7280;
 
 // ─── Typography ──────────────────────────────────────────────
 $font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
@@ -50,5 +71,6 @@ $space-xl: 24px;
 $sidebar-width: 280px;
 $navbar-height: 48px;
 $topbar-height: 52px;
-$card-radius: 2px;
-$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+$card-radius: 10px;
+$card-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.08);
+$card-shadow-hover: 0 4px 10px rgba(16, 24, 40, 0.10), 0 2px 4px rgba(16, 24, 40, 0.08);

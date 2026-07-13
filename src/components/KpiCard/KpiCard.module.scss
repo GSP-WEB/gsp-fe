@@ -8,10 +8,15 @@
   flex-direction: column;
   min-width: 0;
   position: relative;
+  transition: box-shadow 0.15s ease;
 }
 
 .hoverable {
   cursor: pointer;
+
+  &:hover {
+    box-shadow: $card-shadow-hover;
+  }
 
   &:hover .hoverPanel,
   &:focus-within .hoverPanel {
@@ -35,6 +40,7 @@
   display: flex;
   align-items: center;
   min-height: 26px;
+  border-radius: $card-radius $card-radius 0 0;
 }
 
 .headerTitle {
@@ -46,12 +52,22 @@
   line-height: 1.2;
 }
 
+.asOf {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  text-align: center;
+  padding: $space-xs $space-sm 0;
+  letter-spacing: 0.03em;
+}
+
 .body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $space-lg $space-sm;
-  min-height: 130px;
+  gap: 4px;
+  padding: $space-md $space-sm $space-lg;
+  min-height: 110px;
   transition: background 0.15s ease;
 }
 
@@ -69,6 +85,32 @@
   font-weight: 300;
   color: $color-text-muted;
   line-height: 1.1;
+}
+
+.delta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $font-size-sm;
+  font-weight: 600;
+}
+
+.deltaArrow {
+  font-size: 9px;
+}
+
+.deltaUp {
+  color: $color-success;
+}
+
+.deltaDown {
+  color: $color-warning;
+}
+
+.deltaFlat {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  font-weight: 500;
 }
 
 .hoverPanel {
