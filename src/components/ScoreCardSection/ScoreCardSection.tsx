@@ -1,6 +1,6 @@
 import KpiCard from "@/components/KpiCard/KpiCard";
 import Grid from "@/components/Grid/Grid";
-import { KpiCardData } from "@/data/scoreCard";
+import { KpiCardData } from "@/mock-data/scoreCard";
 import styles from "./ScoreCardSection.module.scss";
 
 interface Props {
@@ -21,7 +21,7 @@ export default function ScoreCardSection({
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>{title}</h2>
-      <Grid minColumnWidth={260} columns={4}>
+      <Grid minColumnWidth={200}>
         {cards.map((card) => (
           <KpiCard key={`${keyPrefix}${card.id}`} data={card} />
         ))}

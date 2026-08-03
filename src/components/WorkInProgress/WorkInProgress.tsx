@@ -8,6 +8,7 @@ interface Props {
 export default function WorkInProgress({ label = "WORK IN PROGRESS" }: Props) {
   return (
     <div className={styles.body}>
+      {/* NOTE: edited */}
       <p className={styles.wip}>{label}</p>
     </div>
   );

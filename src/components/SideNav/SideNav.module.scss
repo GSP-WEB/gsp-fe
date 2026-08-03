@@ -11,6 +11,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   transition: width 0.18s ease, min-width 0.18s ease;
+  border-right: 1px solid $color-border;
 }
 
 .collapsed {
@@ -26,13 +27,13 @@
   padding: $space-md $space-lg;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid $color-border;
   color: $color-sidebar-text;
   cursor: pointer;
   text-align: left;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.04);
   }
 }
 
@@ -44,10 +45,11 @@
 
 .toggleLabel {
   font-size: $font-size-md;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: $color-text-primary;
 }
 
 .list {
@@ -70,12 +72,17 @@
   transition: background 0.15s;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 
+// Active row: solid blue pill with white text — matches parent app.
 .rowActive {
-  background: rgba(255, 255, 255, 0.14);
+  background: $color-nav-active;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
 }
 
 .label {
@@ -90,6 +97,11 @@
   font-size: $font-size-md;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+// White text when the row is active.
+.rowActive .label {
+  color: #ffffff;
 }
 
 .labelText {
@@ -107,7 +119,7 @@
 }
 
 .rowActive .dot {
-  background: $color-nav-active;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .chevronBtn {
@@ -121,6 +133,14 @@
 
   &:hover {
     color: $color-sidebar-text;
+  }
+}
+
+.rowActive .chevronBtn {
+  color: rgba(255, 255, 255, 0.8);
+
+  &:hover {
+    color: #ffffff;
   }
 }
 
@@ -154,12 +174,12 @@
   text-overflow: ellipsis;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.05);
     color: $color-sidebar-text;
   }
 }
 
 .subLabelActive {
-  color: $color-sidebar-text;
+  color: $color-nav-active;
   font-weight: 600;
 }

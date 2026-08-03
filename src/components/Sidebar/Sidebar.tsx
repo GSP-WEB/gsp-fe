@@ -1,6 +1,6 @@
-'use client';
-import { overallRatings, kpiDates } from '@/data/scoreCard';
-import styles from './Sidebar.module.scss';
+"use client";
+import { overallRatings, kpiDates } from "@/mock-data/scoreCard";
+import styles from "./Sidebar.module.scss";
 
 export default function Sidebar() {
   return (
@@ -34,11 +34,21 @@ export default function Sidebar() {
       <div className={styles.section}>
         <div className={styles.legendHeader}>** RATING</div>
         <ul className={styles.legend}>
-          <li><span className={styles.legendScore}>5</span> - EXCEPTIONAL</li>
-          <li><span className={styles.legendScore}>4</span> - EXCELLENT</li>
-          <li><span className={styles.legendScore}>3</span> - GOOD</li>
-          <li><span className={styles.legendScore}>2</span> - FAIR</li>
-          <li><span className={styles.legendScore}>1</span> - POOR</li>
+          <li>
+            <span className={styles.legendScore}>5</span> - EXCEPTIONAL
+          </li>
+          <li>
+            <span className={styles.legendScore}>4</span> - EXCELLENT
+          </li>
+          <li>
+            <span className={styles.legendScore}>3</span> - GOOD
+          </li>
+          <li>
+            <span className={styles.legendScore}>2</span> - FAIR
+          </li>
+          <li>
+            <span className={styles.legendScore}>1</span> - POOR
+          </li>
         </ul>
       </div>
 

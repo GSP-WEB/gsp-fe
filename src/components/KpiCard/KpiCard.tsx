@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { KpiCardData } from "@/data/scoreCard";
+import { KpiCardData } from "@/mock-data/scoreCard";
 import TrendPanel from "./TrendPanel";
 import styles from "./KpiCard.module.scss";
 
@@ -33,21 +33,31 @@ function getMomDelta(data: KpiCardData): MomDelta | null {
   return { month: latest.month, delta };
 }
 
+interface PanelPos {
+  top: number;
+  left: number;
+}
+
 export default function KpiCard({ data, wide = false }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [flipped, setFlipped] = useState(false);
+  const [panelPos, setPanelPos] = useState<PanelPos>({ top: 0, left: 0 });
 
-  const checkOverflow = () => {
+  const computePos = () => {
     const el = cardRef.current;
     if (!el) return;
-    const { left } = el.getBoundingClientRect();
-    const wouldOverflow = left + PANEL_WIDTH > window.innerWidth;
-    setFlipped(wouldOverflow);
+    const rect = el.getBoundingClientRect();
+    const left =
+      rect.left + PANEL_WIDTH > window.innerWidth
+        ? Math.max(0, rect.right - PANEL_WIDTH)
+        : rect.left;
+    setPanelPos({ top: rect.bottom + 6, left });
   };
 
   if (data.workInProgress) {
     return (
-      <div className={`${styles.card} ${wide ? styles.wide : ""} ${styles.wip}`}>
+      <div
+        className={`${styles.card} ${wide ? styles.wide : ""} ${styles.wip}`}
+      >
         <div className={styles.header}>
           <span className={styles.headerTitle}>{data.title}</span>
         </div>
@@ -68,14 +78,16 @@ export default function KpiCard({ data, wide = false }: Props) {
     <div
       ref={cardRef}
       className={`${styles.card} ${wide ? styles.wide : ""} ${hasDetail ? styles.hoverable : ""}`}
-      onMouseEnter={checkOverflow}
-      onFocus={checkOverflow}
+      onMouseEnter={computePos}
+      onFocus={computePos}
     >
       <div className={styles.header}>
         <span className={styles.headerTitle}>{data.title}</span>
       </div>
 
-      {mom && <div className={styles.asOf}>as of {mom.month.toUpperCase()}</div>}
+      {mom && (
+        <div className={styles.asOf}>as of {mom.month.toUpperCase()}</div>
+      )}
 
       <div className={styles.body}>
         {hasValue ? (
@@ -85,14 +97,20 @@ export default function KpiCard({ data, wide = false }: Props) {
               {data.unit}
             </div>
             {mom && mom.delta !== 0 && (
-              <div className={`${styles.delta} ${mom.delta > 0 ? styles.deltaUp : styles.deltaDown}`}>
-                <span className={styles.deltaArrow}>{mom.delta > 0 ? "▲" : "▼"}</span>
+              <div
+                className={`${styles.delta} ${mom.delta > 0 ? styles.deltaUp : styles.deltaDown}`}
+              >
+                <span className={styles.deltaArrow}>
+                  {mom.delta > 0 ? "▲" : "▼"}
+                </span>
                 MoM: {mom.delta > 0 ? "+" : ""}
                 {mom.delta}
                 {data.unit}
               </div>
             )}
-            {mom && mom.delta === 0 && <div className={styles.deltaFlat}>— No change MoM</div>}
+            {mom && mom.delta === 0 && (
+              <div className={styles.deltaFlat}>— No change MoM</div>
+            )}
           </>
         ) : (
           <div className={styles.kpiDash}>-</div>
@@ -100,7 +118,10 @@ export default function KpiCard({ data, wide = false }: Props) {
       </div>
 
       {hasDetail && (
-        <div className={`${styles.hoverPanel} ${flipped ? styles.alignRight : ""}`}>
+        <div
+          className={styles.hoverPanel}
+          style={{ top: panelPos.top, left: panelPos.left }}
+        >
           <TrendPanel data={data} />
         </div>
       )}

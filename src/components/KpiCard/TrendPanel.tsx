@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   Label,
 } from "recharts";
-import { KpiCardData, Territory } from "@/data/scoreCard";
+import { KpiCardData, Territory } from "@/mock-data/scoreCard";
 import styles from "./TrendPanel.module.scss";
 
 interface Props {

@@ -6,8 +6,8 @@
   justify-content: space-between;
   height: $topbar-height;
   padding: 0 $space-lg;
-  background-color: $color-navy;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: $color-nav-bg;
+  border-bottom: 1px solid $color-border;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -21,13 +21,13 @@
 
 .icon {
   font-size: 20px;
-  color: $color-gold;
+  color: $color-primary;
 }
 
 .title {
   font-size: $font-size-lg;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 700;
+  color: $color-text-primary;
   letter-spacing: 0.01em;
 }
 
@@ -39,16 +39,16 @@
 
 .btnReset {
   padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid $color-border;
   border-radius: 20px;
   font-size: $font-size-base;
-  color: rgba(255, 255, 255, 0.85);
+  color: $color-text-secondary;
   background: transparent;
   cursor: pointer;
   transition: background 0.15s;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.04);
   }
 }
 
@@ -57,17 +57,17 @@
   align-items: center;
   gap: 6px;
   padding: 6px 16px;
-  background-color: rgba($color-gold, 0.16);
+  background-color: $color-primary-muted;
   border: none;
   border-radius: 20px;
   font-size: $font-size-base;
   font-weight: 500;
-  color: $color-gold;
+  color: $color-primary;
   cursor: pointer;
   transition: background 0.15s;
 
   &:hover {
-    background: rgba($color-gold, 0.26);
+    background: rgba(23, 96, 209, 0.18);
   }
 }
 
@@ -81,14 +81,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid $color-border;
   border-radius: 50%;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.85);
+  color: $color-text-secondary;
   cursor: pointer;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -96,8 +96,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: $color-gold;
-  color: $color-navy;
+  background-color: $color-primary;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;

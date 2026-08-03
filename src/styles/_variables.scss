@@ -1,19 +1,21 @@
 // ─── Color Palette ───────────────────────────────────────────
-// Based on the company's navy / gold / green brand system (see the
-// reference dashboard: navy ticker + panels, gold highlights, green/amber
-// status indicators).
-$color-bg: #f2f4f8;
+$color-bg: #edf2f8;
 $color-surface: #ffffff;
 
-// Card headers use the brand navy instead of neutral charcoal.
+// Primary interactive blue — section header bars, active states, accents.
+$color-primary: #1760d1;
+$color-primary-dark: #1150aa;
+$color-primary-muted: rgba(23, 96, 209, 0.1);
+
+// Card headers keep the brand navy.
 $color-card-header: #1f2e52;
 $color-card-header-dark: #16213e;
 
-// Left nav + right rating panel share this dark navy rail.
-$color-sidebar-bg: #16213e;
-$color-sidebar-bg-raised: #1f2e52;
-$color-sidebar-text: #ffffff;
-$color-sidebar-muted: #97a1bd;
+// Left nav — NOW LIGHT to match parent app (pale blue-gray rail).
+$color-sidebar-bg: #e8eef6;
+$color-sidebar-bg-raised: #dde6f0;
+$color-sidebar-text: #182135;
+$color-sidebar-muted: #6b7280;
 
 $color-blue-bar: #4a90d9;
 $color-blue-bar-light: #6aade8;
@@ -21,20 +23,19 @@ $color-red-bar: #d64545;
 $color-orange-bar: #e08030;
 $color-yellow-bar: #d4b800;
 
-// Brand navy + gold accent, taken from the reference dashboard's
-// ticker bar and BUILD/FINANCIALS panels.
+// Brand navy + gold — gold is now reserved for ratings and the avatar only.
 $color-navy: #16213e;
 $color-navy-light: #1f2e52;
 $color-gold: #e8a33d;
-$color-nav-active: $color-gold;
-$color-nav-text: $color-gold;
-$color-nav-bg: #ffffff;
-$color-nav-border: #e2e5ec;
 
-// Semantic status colors — green = improved, amber = degraded, gray = no
-// data — matching the "Improved / Degraded / No data" legend in the
-// reference screenshot.
-$color-success: #2e8b57;
+// Nav / active state — blue, matching parent app.
+$color-nav-active: $color-primary;
+$color-nav-text: $color-primary;
+$color-nav-bg: #ffffff;
+$color-nav-border: #dde6f0;
+
+// Semantic status colors.
+$color-success: #1e8a4c;
 $color-warning: #e0a939;
 $color-danger: #d64545;
 $color-neutral: #9aa1b1;
@@ -43,8 +44,8 @@ $color-rating-gold: $color-gold;
 $color-text-primary: #182135;
 $color-text-secondary: #4b5568;
 $color-text-muted: #6b7280;
-$color-border: #e2e5ec;
-$color-wip-bg: #f7f8fb;
+$color-border: #dde6f0;
+$color-wip-bg: #f0f4fb;
 $color-wip-text: #6b7280;
 
 // ─── Typography ──────────────────────────────────────────────

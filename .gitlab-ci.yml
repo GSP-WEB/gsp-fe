@@ -1,0 +1,57 @@
+stages:
+  - deploy
+
+deploy_production:
+  stage: deploy
+  tags:
+    - prod-203
+  only:
+    - main
+  script:
+    # Create the project folder if it doesn't exist
+    - if (!(Test-Path "C:\UniServerZ\www\fosp-fe")) { New-Item -ItemType Directory -Path "C:\UniServerZ\www\fosp-fe" }
+
+    # Move to the project directory
+    - cd C:\UniServerZ\www\fosp-fe
+
+    # Mark the directory as safe for git
+    - git config --global --add safe.directory C:/UniServerZ/www/fosp-fe
+
+    # 1. Initialize git if not present
+    - if (!(Test-Path .git)) { git init }
+
+    # 2. Safely remove existing origin remote if it exists without throwing an error
+    - git remote | Select-String -Pattern "origin" | ForEach-Object { git remote remove origin }
+
+    # 3. Fetch and force working tree to match origin/main
+    - git remote add origin https://gitlab.com/globetelecom/platforms/ntg-nai/application/dara/fosp-fe.git
+    - git fetch origin main
+    - git checkout -f -B main origin/main
+    - git reset --hard origin/main
+    - git clean -fd -e .pm2 -e .env.local -e .env.production -e node_modules -e .next
+
+    # 4. Install + build
+    - npm install
+    - npm run build
+
+    # 5. Restart PM2 detached from the GitLab job process tree
+    - |
+      $env:PM2_HOME = "C:\UniServerZ\www\fosp-fe\.pm2"
+      $cmd = "set PM2_HOME=C:\UniServerZ\www\fosp-fe\.pm2&& cd /d C:\UniServerZ\www\fosp-fe&& npx --no-install pm2 delete fosp-fe&& npx --no-install pm2 start ecosystem.config.cjs&& npx --no-install pm2 save"
+
+      Start-Process -FilePath "cmd.exe" -ArgumentList "/c", $cmd -WorkingDirectory "C:\UniServerZ\www\fosp-fe" -WindowStyle Hidden
+
+      Start-Sleep -Seconds 8
+
+      $env:PM2_HOME = "C:\UniServerZ\www\fosp-fe\.pm2"
+
+      npx --no-install pm2 status
+
+      try {
+        $res = Invoke-WebRequest -Uri "http://127.0.0.1:3002/" -UseBasicParsing -TimeoutSec 15
+        Write-Host "Health check OK: $($res.StatusCode)"
+      } catch {
+        Write-Error "App is not responding on :3002 after restart"
+        npx --no-install pm2 logs fosp-fe --lines 50 --nostream
+        exit 1
+      }

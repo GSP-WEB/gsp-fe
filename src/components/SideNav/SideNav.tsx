@@ -1,14 +1,14 @@
-'use client';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { navTabs, NavItem } from '@/data/scoreCard';
-import styles from './SideNav.module.scss';
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { navTabs, NavItem } from "@/mock-data/scoreCard";
+import styles from "./SideNav.module.scss";
 
-const COLLAPSE_KEY = 'gsp.sidenav.collapsed';
+const COLLAPSE_KEY = "gsp.sidenav.collapsed";
 
 function isItemActive(pathname: string, item: NavItem): boolean {
-  const own = pathname === item.href || pathname.startsWith(item.href + '/');
+  const own = pathname === item.href || pathname.startsWith(item.href + "/");
   const child = item.children?.some((c) => isItemActive(pathname, c)) ?? false;
   return own || child;
 }
@@ -21,14 +21,18 @@ export default function SideNav() {
 
   useEffect(() => {
     const stored = window.localStorage.getItem(COLLAPSE_KEY);
-    if (stored !== null) setCollapsed(stored === '1');
+    if (stored !== null) setCollapsed(stored === "1");
   }, []);
 
   useEffect(() => {
     setOpenGroups((prev) => {
       const next = { ...prev };
       navTabs.forEach((tab) => {
-        if (tab.children && isItemActive(pathname, tab) && next[tab.href] === undefined) {
+        if (
+          tab.children &&
+          isItemActive(pathname, tab) &&
+          next[tab.href] === undefined
+        ) {
           next[tab.href] = true;
         }
       });
@@ -39,7 +43,7 @@ export default function SideNav() {
   const toggleCollapsed = () => {
     setCollapsed((prev) => {
       const next = !prev;
-      window.localStorage.setItem(COLLAPSE_KEY, next ? '1' : '0');
+      window.localStorage.setItem(COLLAPSE_KEY, next ? "1" : "0");
       return next;
     });
   };
@@ -49,16 +53,18 @@ export default function SideNav() {
   };
 
   return (
-    <nav className={`${styles.sidenav} ${collapsed ? styles.collapsed : ''}`}>
+    <nav className={`${styles.sidenav} ${collapsed ? styles.collapsed : ""}`}>
       <button
         type="button"
         className={styles.toggleBtn}
         onClick={toggleCollapsed}
-        aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}
-        title={collapsed ? 'Expand navigation' : 'Collapse navigation'}
+        aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
+        title={collapsed ? "Expand navigation" : "Collapse navigation"}
       >
         <span className={styles.hamburger}>☰</span>
-        {!collapsed && <span className={styles.toggleLabel}>GSP Dashboard</span>}
+        {!collapsed && (
+          <span className={styles.toggleLabel}>GSP Dashboard</span>
+        )}
       </button>
 
       <ul className={styles.list}>
@@ -69,10 +75,18 @@ export default function SideNav() {
 
           return (
             <li key={tab.href} className={styles.item}>
-              <div className={`${styles.row} ${active ? styles.rowActive : ''}`}>
-                <Link href={tab.href} className={styles.label} title={tab.label}>
+              <div
+                className={`${styles.row} ${active ? styles.rowActive : ""}`}
+              >
+                <Link
+                  href={tab.href}
+                  className={styles.label}
+                  title={tab.label}
+                >
                   <span className={styles.dot} />
-                  {!collapsed && <span className={styles.labelText}>{tab.label}</span>}
+                  {!collapsed && (
+                    <span className={styles.labelText}>{tab.label}</span>
+                  )}
                 </Link>
 
                 {hasChildren && !collapsed && (
@@ -80,9 +94,13 @@ export default function SideNav() {
                     type="button"
                     className={styles.chevronBtn}
                     onClick={() => toggleGroup(tab.href)}
-                    aria-label={isOpen ? `Collapse ${tab.label}` : `Expand ${tab.label}`}
+                    aria-label={
+                      isOpen ? `Collapse ${tab.label}` : `Expand ${tab.label}`
+                    }
                   >
-                    <span className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ''}`}>
+                    <span
+                      className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`}
+                    >
                       ▾
                     </span>
                   </button>
@@ -97,7 +115,7 @@ export default function SideNav() {
                       <li key={child.href}>
                         <Link
                           href={child.href}
-                          className={`${styles.subLabel} ${childActive ? styles.subLabelActive : ''}`}
+                          className={`${styles.subLabel} ${childActive ? styles.subLabelActive : ""}`}
                         >
                           {child.label}
                         </Link>

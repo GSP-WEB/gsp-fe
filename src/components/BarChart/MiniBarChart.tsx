@@ -1,7 +1,15 @@
-'use client';
-import { BarChart, Bar, XAxis, Cell, LabelList, ResponsiveContainer, Tooltip } from 'recharts';
-import { MonthlyDataPoint } from '@/data/scoreCard';
-import styles from './MiniBarChart.module.scss';
+"use client";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  Cell,
+  LabelList,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { MonthlyDataPoint } from "@/mock-data/scoreCard";
+import styles from "./MiniBarChart.module.scss";
 
 interface Props {
   data: MonthlyDataPoint[];
@@ -9,7 +17,11 @@ interface Props {
   height?: number;
 }
 
-export default function MiniBarChart({ data, color = '#4a90d9', height = 90 }: Props) {
+export default function MiniBarChart({
+  data,
+  color = "#4a90d9",
+  height = 90,
+}: Props) {
   const filtered = data.filter((d) => d.value !== null);
   if (filtered.length === 0) return null;
 
@@ -18,16 +30,20 @@ export default function MiniBarChart({ data, color = '#4a90d9', height = 90 }: P
   return (
     <div className={styles.chartWrap} style={{ height }}>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} margin={{ top: 14, right: 4, left: 4, bottom: 0 }} barCategoryGap="20%">
+        <BarChart
+          data={data}
+          margin={{ top: 14, right: 4, left: 4, bottom: 0 }}
+          barCategoryGap="20%"
+        >
           <XAxis
             dataKey="month"
-            tick={{ fontSize: 9, fill: '#888' }}
+            tick={{ fontSize: 9, fill: "#888" }}
             axisLine={false}
             tickLine={false}
           />
           <Tooltip
-            contentStyle={{ fontSize: 10, padding: '4px 8px' }}
-            formatter={(v: number) => [`${v}%`, '']}
+            contentStyle={{ fontSize: 10, padding: "4px 8px" }}
+            formatter={(v: number) => [`${v}%`, ""]}
             labelStyle={{ fontWeight: 600 }}
           />
           <Bar dataKey="value" radius={[1, 1, 0, 0]} maxBarSize={28}>
@@ -40,8 +56,8 @@ export default function MiniBarChart({ data, color = '#4a90d9', height = 90 }: P
             <LabelList
               dataKey="value"
               position="top"
-              formatter={(v: number | null) => (v !== null ? `${v}%` : '')}
-              style={{ fontSize: 8, fill: '#555', fontWeight: 500 }}
+              formatter={(v: number | null) => (v !== null ? `${v}%` : "")}
+              style={{ fontSize: 8, fill: "#555", fontWeight: 500 }}
             />
           </Bar>
         </BarChart>
